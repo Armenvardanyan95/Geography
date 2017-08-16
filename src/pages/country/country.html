@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start style="float: left !important;">
+      <button ion-button (click)="dismiss()" class="country-header">Close</button>
+    </ion-buttons>
+    <ion-title>{{ country.name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-1></ion-col>
+      <ion-col col-12>
+        <img [src]="country.flag" class="modal-flag" />
+      </ion-col>
+      <ion-col col-1></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4></ion-col>
+      <ion-col col-6>
+        <h4>{{ country.name}}</h4>
+      </ion-col>
+      <ion-col col-4></ion-col>
+    </ion-row>
+    <ion-row *ngIf="country.name != country.nativeName">
+      <ion-col col-4></ion-col>
+      <ion-col col-6>
+        <h5>({{ country.nativeName}})</h5>
+      </ion-col>
+      <ion-col col-4></ion-col>
+    </ion-row>
+    <ion-row col-14>
+      <ion-list>
+        <ion-list-header>
+          Neighboring Countries:
+        </ion-list-header>
+        <button ion-item *ngFor="let neighbor of neighbours" (click)="openCountryModal(neighbor)">
+            {{ neighbor.name }}
+        </button>
+      </ion-list>
+    </ion-row>
+  </ion-grid>
+</ion-content>
