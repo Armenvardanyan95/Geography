@@ -1,6 +1,6 @@
 {
   "name": "Geography",
-  "app_id": "",
+  "app_id": "e77349ce",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

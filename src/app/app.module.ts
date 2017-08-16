@@ -13,6 +13,9 @@ import { CountryPage } from '../pages/country/country';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {ModalsService} from "./services/modals.service";
+import {CountriesService} from "./services/countries.service";
+import {QuestionsService} from "./services/questions.service";
+import {GamePage} from "../pages/game/game";
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import {ModalsService} from "./services/modals.service";
     ContactPage,
     HomePage,
     TabsPage,
-    CountryPage
+    CountryPage,
+    GamePage
   ],
   imports: [
     BrowserModule,
@@ -35,10 +39,13 @@ import {ModalsService} from "./services/modals.service";
     ContactPage,
     HomePage,
     TabsPage,
-    CountryPage
+    CountryPage,
+    GamePage
   ],
   providers: [
     ModalsService,
+    CountriesService,
+    QuestionsService,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

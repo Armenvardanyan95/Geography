@@ -1,0 +1,62 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start style="float: left !important;">
+      <button ion-button (click)="dismiss()" class="country-header">Close</button>
+    </ion-buttons>
+    <ion-title>Game</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col col-1></ion-col>
+      <ion-col col-12>
+        <img *ngIf="currentQuestion.type == QuestionType.Flag" class="modal-flag" [src]="currentQuestion.flag" />
+        <h6>{{ currentQuestion.text }}</h6>
+      </ion-col>
+      <ion-col col-1></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-1></ion-col>
+      <ion-col col-12>
+        <button ion-button class="game-answer-button" style="float: left !important;"
+                (click)="answer(0)" [ngClass]="{'has-won': (hasWon || isDefeated) && currentQuestion.correctAnswer == 0}">
+          {{ currentQuestion.answers[0] }}
+        </button>
+        <button ion-button class="game-answer-button" style="float: right !important;"
+                (click)="answer(1)" [ngClass]="{'has-won': (hasWon || isDefeated) && currentQuestion.correctAnswer == 1}">
+          {{ currentQuestion.answers[1] }}
+        </button>
+      </ion-col>
+      <ion-col col-1></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-1></ion-col>
+      <ion-col col-12>
+        <button ion-button class="game-answer-button" style="float: left !important;"
+                (click)="answer(2)"[ngClass]="{'has-won': (hasWon || isDefeated) && currentQuestion.correctAnswer == 2}" >
+          {{ currentQuestion.answers[2] }}
+        </button>
+        <button ion-button class="game-answer-button" style="float: right !important;"
+                (click)="answer(3)" [ngClass]="{'has-won': (hasWon || isDefeated) && currentQuestion.correctAnswer == 3}">
+          {{ currentQuestion.answers[3] }}
+        </button>
+      </ion-col>
+      <ion-col col-1></ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="hasWon">
+      <ion-col col-14>
+        <button ion-button (click)="next()">Next Question</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -23,7 +23,6 @@ export class CountryPage {
   }
 
   openCountryModal(country): void {
-    console.log('frrrroooooom', country)
     this.modalsService.modalOpened.emit(country);
   }
 

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, Modal } from 'ionic-angular';
-import {Http} from '@angular/http';
 import {FormControl} from '@angular/forms';
 
 import {CountryPage} from '../../pages/country/country';
@@ -10,6 +9,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/do';
 import {ModalsService} from "../../app/services/modals.service";
+import {CountriesService} from "../../app/services/countries.service";
 
 @Component({
   selector: 'page-home',
@@ -23,14 +23,10 @@ export class HomePage {
   countries: any[] = [];
   noCountriesFound: boolean = false;
 
-  constructor(public navCtrl: NavController, private http: Http, private modalCtrl: ModalController,
+  constructor(public navCtrl: NavController, private countriesService: CountriesService, private modalCtrl: ModalController,
               private modalsService: ModalsService) {
-    this.http.get(`https://restcountries.eu/rest/v2/all`)
-      .map(res => res.json())
-      .subscribe(res => {
-        this.countries = this.allCountries = res;
-        this.noCountriesFound = false;
-        }, () => this.noCountriesFound = true);
+
+    this.countriesService.getAllCountries().subscribe(countries => this.countries = this.allCountries = countries);
 
     this.autocomplete.valueChanges
       .debounceTime(1000)
