@@ -16,6 +16,7 @@ export class CountryPage {
               public viewCtrl: ViewController, private modalsService: ModalsService) {
     this.country = this.params.get('country');
     this.neighbours = this.params.get('neighbours');
+    console.log(this.country)
   }
 
   dismiss() {

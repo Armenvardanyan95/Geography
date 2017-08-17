@@ -4,6 +4,8 @@ import {HttpModule} from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+import { AgmCoreModule } from '@agm/core';
+
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -16,6 +18,7 @@ import {ModalsService} from "./services/modals.service";
 import {CountriesService} from "./services/countries.service";
 import {QuestionsService} from "./services/questions.service";
 import {GamePage} from "../pages/game/game";
+import {NumberFormatPipe} from "./pipes/number.format.pipe";
 
 @NgModule({
   declarations: [
@@ -25,11 +28,15 @@ import {GamePage} from "../pages/game/game";
     HomePage,
     TabsPage,
     CountryPage,
-    GamePage
+    GamePage,
+    NumberFormatPipe
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD88Itl-8yLLJxhCG7EHQtSNA3TrK52Aik'
+    }),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
